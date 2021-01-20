@@ -8,7 +8,7 @@
 # Docker-compose example
 
 You can add more instances by adding another service.
-´´´´
+```yaml
 version: "3"
 
 services:
@@ -18,5 +18,4 @@ services:
     container_name: iperf3
     ports:
       - "5201:5201"
-
-´´´´
+```
