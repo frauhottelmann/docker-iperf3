@@ -3,18 +3,18 @@ FROM arm32v7/alpine:latest
 # Copy downloaded architecture emulation static binary
 COPY qemu-arm-static /usr/bin/
 
-ARG APPLICATION="myapp"
+ARG APPLICATION="docker-iperf3"
 ARG BUILD_RFC3339="1970-01-01T00:00:00Z"
 ARG REVISION="local"
-ARG DESCRIPTION="no description"
-ARG PACKAGE="user/repo"
-ARG VERSION="dirty"
+ARG DESCRIPTION="Alpine iperf3 in a Docker container"
+ARG PACKAGE="frauhottelmann/docker-iperf3"
+ARG VERSION="3.9-r1"
 
 STOPSIGNAL SIGKILL
 
 LABEL org.opencontainers.image.ref.name="${PACKAGE}" \
       org.opencontainers.image.created=$BUILD_RFC3339 \
-      org.opencontainers.image.authors="Justin J. Novack <jnovack@gmail.com>" \
+      org.opencontainers.image.authors="frauhottelmann" \
       org.opencontainers.image.documentation="https://github.com/${PACKAGE}/README.md" \
       org.opencontainers.image.description="${DESCRIPTION}" \
       org.opencontainers.image.licenses="GPLv3" \
@@ -30,3 +30,14 @@ ENV \
       DESCRIPTION="${DESCRIPTION}" \
       PACKAGE="${PACKAGE}" \
       VERSION="${VERSION}"
+
+RUN apk add --no-cache iperf3="${VERSION}" \
+    && adduser -S iperf
+
+USER iperf
+
+EXPOSE 5201/tcp 5201/udp
+
+ENTRYPOINT ["iperf3"]
+
+CMD ["-s"]
