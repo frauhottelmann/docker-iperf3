@@ -1,6 +1,6 @@
 # Alpine iperf3 in a docker container
 
-- based on mlabbe/iperf3 and jnovack/docker-multi-arch-hooks
+- based on [mlabbe/iperf3](https://github.com/michellabbe/docker-iperf3) and [jnovack/docker-multi-arch-hooks](https://github.com/jnovack/docker-multi-arch-hooks)
 - automatic multiarch builds on docker hub
 - based on stable Alpine
 - tags correspond to iperf3 package in Alpine
