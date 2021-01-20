@@ -13,7 +13,7 @@ version: "3"
 
 services:
   iperf:
-    image: frauhottelmann/iperf3:3.9-r1
+    image: frauhottelmann/docker-iperf3:v3.9-r1
     restart: always
     container_name: iperf3
     ports:
