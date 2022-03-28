@@ -1,4 +1,4 @@
-FROM alpine:3.15.1
+FROM alpine:3.15.2
 
 ARG APPLICATION="docker-iperf3"
 ARG BUILD_RFC3339="1970-01-01T00:00:00Z"
