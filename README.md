@@ -5,7 +5,7 @@
 - based on [mlabbe/iperf3](https://github.com/michellabbe/docker-iperf3)
 - automatic multiarch builds on GitHub
 - based on stable Alpine
-- tags correspond to iperf3 package in Alpine
+- tags correspond to iperf3 version in Alpine
 
 # Docker-compose example
 
