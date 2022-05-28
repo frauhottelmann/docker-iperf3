@@ -5,7 +5,7 @@ ARG BUILD_RFC3339="1970-01-01T00:00:00Z"
 ARG REVISION="local"
 ARG DESCRIPTION="Alpine iperf3 in a Docker container"
 ARG PACKAGE="frauhottelmann/docker-iperf3"
-ARG VERSION="3.10.1-r0"
+ARG VERSION="3.11-r0"
 
 STOPSIGNAL SIGKILL
 
@@ -28,7 +28,7 @@ ENV \
       PACKAGE="${PACKAGE}" \
       VERSION="${VERSION}"
 
-RUN apk add --no-cache iperf3=3.10.1-r0 \
+RUN apk add --no-cache iperf3=3.11-r0 \
     && adduser -S iperf
 
 USER iperf
