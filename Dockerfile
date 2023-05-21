@@ -28,7 +28,7 @@ ENV \
       PACKAGE="${PACKAGE}" \
       VERSION="${VERSION}"
 
-RUN apk add --no-cache iperf3=3.12-r0 \
+RUN apk add --no-cache iperf3=3.13-r1 \
     && adduser -S iperf
 
 USER iperf
