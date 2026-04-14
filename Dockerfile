@@ -1,11 +1,11 @@
-FROM alpine:3.21.0
+FROM alpine:3.23.3
 
 ARG APPLICATION="docker-iperf3"
 ARG BUILD_RFC3339="1970-01-01T00:00:00Z"
 ARG REVISION="local"
 ARG DESCRIPTION="Alpine iperf3 in a Docker container"
 ARG PACKAGE="frauhottelmann/docker-iperf3"
-ARG VERSION="3.17.1-r0"
+ARG VERSION="3.19.1-r1"
 
 STOPSIGNAL SIGKILL
 
@@ -28,7 +28,7 @@ ENV \
       PACKAGE="${PACKAGE}" \
       VERSION="${VERSION}"
 
-RUN apk add --no-cache iperf3=3.17.1-r0 \
+RUN apk add --no-cache iperf3=3.19.1-r1 \
     && adduser -S iperf
 
 USER iperf
