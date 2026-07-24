@@ -11,13 +11,13 @@
 
 You can add more instances by adding another service.
 ```yaml
-version: "3"
-
+name: iperf3
 services:
   iperf:
-    image: frauhottelmann/docker-iperf3:v3.11-r0
-    restart: always
+    image: ghcr.io/frauhottelmann/iperf3:latest
+    restart: unless-stopped
     container_name: iperf3
     ports:
-      - "5201:5201"
+      - 5201:5201/tcp
+      - 5201:5201/udp
 ```
