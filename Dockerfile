@@ -9,17 +9,6 @@ ARG VERSION="3.20-r0"
 
 STOPSIGNAL SIGKILL
 
-LABEL org.opencontainers.image.ref.name="${PACKAGE}" \
-      org.opencontainers.image.created=$BUILD_RFC3339 \
-      org.opencontainers.image.authors="frauhottelmann" \
-      org.opencontainers.image.documentation="https://github.com/${PACKAGE}/README.md" \
-      org.opencontainers.image.description="${DESCRIPTION}" \
-      org.opencontainers.image.licenses="GPLv3" \
-      org.opencontainers.image.source="https://github.com/${PACKAGE}" \
-      org.opencontainers.image.revision=$REVISION \
-      org.opencontainers.image.version=$VERSION \
-      org.opencontainers.image.url="https://hub.docker.com/r/${PACKAGE}/"
-
 ENV \
       APPLICATION="${APPLICATION}" \
       BUILD_RFC3339="${BUILD_RFC3339}" \
