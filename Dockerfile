@@ -1,26 +1,15 @@
 FROM alpine:3
 
-ARG APPLICATION="docker-iperf3"
-ARG BUILD_RFC3339="1970-01-01T00:00:00Z"
-ARG REVISION="local"
-ARG DESCRIPTION="Alpine iperf3 in a Docker container"
-ARG PACKAGE="frauhottelmann/docker-iperf3"
-ARG VERSION="3.20-r0"
+# iperf3 version from the Alpine repositories. "~=" accepts any package
+# revision (e.g. 3.20-r0, 3.20-r1), so Alpine rebuilds don't break the build.
+# Keep this in sync with the git tag of a release.
+ARG IPERF3_VERSION=3.20
 
-STOPSIGNAL SIGKILL
+RUN apk add --no-cache "iperf3~=${IPERF3_VERSION}" \
+    && addgroup -S -g 1000 iperf \
+    && adduser -S -D -H -u 1000 -G iperf -s /sbin/nologin iperf
 
-ENV \
-      APPLICATION="${APPLICATION}" \
-      BUILD_RFC3339="${BUILD_RFC3339}" \
-      REVISION="${REVISION}" \
-      DESCRIPTION="${DESCRIPTION}" \
-      PACKAGE="${PACKAGE}" \
-      VERSION="${VERSION}"
-
-RUN apk add --no-cache iperf3=3.20-r0 \
-    && adduser -S iperf
-
-USER iperf
+USER 1000:1000
 
 EXPOSE 5201/tcp 5201/udp
 
