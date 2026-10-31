@@ -3,7 +3,13 @@ services:
   iperf:
     image: ghcr.io/frauhottelmann/iperf3:latest
     restart: unless-stopped
-    container_name: iperf3
     ports:
       - 5201:5201/tcp
       - 5201:5201/udp
+    read_only: true
+    tmpfs:
+      - /tmp  # iperf3 keeps its test buffers in a temporary file
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
